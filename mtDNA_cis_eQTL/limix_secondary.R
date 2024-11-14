@@ -1,6 +1,3 @@
-
-#!/usr/bin/env Rscript
-
 #' -----------------------------------------------------------------------------
 #' Script Title: QTL Analysis for mtDNA and Covariates
 #' Description: This script performs QTL analysis on mitochondrial DNA (mtDNA)
