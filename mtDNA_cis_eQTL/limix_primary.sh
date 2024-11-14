@@ -64,7 +64,7 @@ do
     done 
 done
 
-# 1.1 Setup and run POST PROCESS I
+# 1.2 Setup and run POST PROCESS I
 cases=$(echo "3_logTPM_scale/")
 tissues=$(echo "Brain_Substantia_nigra" "Uterus" "Cells_EBV-transformed_lymphocytes" "Brain_Spinal_cord_cervical_c-1" "Minor_Salivary_Gland" "Brain_Amygdala" "Vagina" "Brain_Anterior_cingulate_cortex_BA24" "Ovary" "Small_Intestine_Terminal_Ileum" "Brain_Hippocampus" "Brain_Putamen_basal_ganglia" "Brain_Cerebellar_Hemisphere" "Brain_Hypothalamus" "Brain_Frontal_Cortex_BA9" "Brain_Caudate_basal_ganglia" "Artery_Coronary" "Liver" "Spleen" "Brain_Nucleus_accumbens_basal_ganglia" "Prostate" "Brain_Cortex" "Brain_Cerebellum" "Adrenal_Gland" "Pituitary" "Pancreas" "Stomach" "Colon_Sigmoid" "Testis" "Esophagus_Gastroesophageal_Junction" "Colon_Transverse" "Heart_Atrial_Appendage" "Artery_Aorta" "Heart_Left_Ventricle" "Breast_Mammary_Tissue" "Esophagus_Muscularis" "Adipose_Visceral_Omentum" "Cells_Cultured_fibroblasts" "Esophagus_Mucosa" "Skin_Not_Sun_Exposed_Suprapubic" "Lung" "Nerve_Tibial" "Artery_Tibial" "Adipose_Subcutaneous" "Thyroid" "Skin_Sun_Exposed_Lower_leg" "Whole_Blood" "Muscle_Skeletal")
 wdir='/path/to/your/output/directory/3_logTPM_scale'
