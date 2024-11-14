@@ -1,4 +1,3 @@
-
 #!/usr/bin/env Rscript
 
 #' -----------------------------------------------------------------------------
@@ -10,6 +9,7 @@
 #' -----------------------------------------------------------------------------
 
 library(qvalue)  # Load qvalue package for multiple testing correction
+setwd("/workingdir") #set working directory 
 
 # Function to read and process tissue data
 process_tissue_data <- function(tissue, POST_TFB, bim) {
@@ -18,7 +18,7 @@ process_tissue_data <- function(tissue, POST_TFB, bim) {
   r_t$tissueqvalue <- qvalue(r_t$empirical_feature_p_value, lambda = 0)$qvalue
   r_t$A1 <- bim$V5[match(r_t$snp_id, bim$V2)]
   r_t$A0 <- bim$V6[match(r_t$snp_id, bim$V2)]
-  r_t$beta <- 0 - r_t$beta  # Reverse the beta values
+  r_t$beta <- 0 - r_t$beta  # Reverse the beta values, because tested allele in limix is major allele, different from all other methods, manually correct here 
   return(r_t)
 }
 
@@ -56,10 +56,12 @@ tissues_tested <- c("Artery_Aorta", "Brain_Spinal_cord_cervical_c-1", "Minor_Sal
                      "Skin_Sun_Exposed_Lower_leg", "Whole_Blood", "Muscle_Skeletal")
 
 cases <- c("3_logTPM_scale")
-SAVE <- "/no-backup/xenofon/Ascend/pipeline/mtDNA_cis_eQTL/secondary/"
+SAVE <- getwd()
 TFB <- NULL
 SFO <- NULL
-bim <- read.table("/no-backup/xenofon/Emperor/22_GTEX/master/mtgeno_allv8/allv8.eur.maf01.bim", as.is = TRUE)
+
+## read in genotype bim file for matching 
+bim <- read.table("allv8.eur.maf01.bim", as.is = TRUE)
 
 for (case in cases) {
   print(case)
@@ -82,32 +84,16 @@ SFO <- process_significant_results(sig_TFB, POST_SFO)
 # Further processing for SFO
 SFO$A1 <- bim$V5[match(SFO$snp_id, bim$V2)]
 SFO$A0 <- bim$V6[match(SFO$snp_id, bim$V2)]
-SFO$beta <- 0 - SFO$beta
+SFO$beta <- 0 - SFO$beta 
 SFO$round <- "secondary"
 SFO$tissues_tested <- length(tissues_tested)
 
 # Save results
-write.table(sig_TFB, '/no-backup/xenofon/Ascend/pipeline/mtDNA_cis_eQTL/secondary/res/GTEX_cis_eQTL_TFB_sig_results_secondary.txt', 
+write.table(sig_TFB, 'GTEX_cis_eQTL_TFB_sig_results_secondary.txt', 
             row.names = FALSE, col.names = TRUE, sep = '\t', quote = FALSE)
-write.table(SFO[SFO$sig == "Yes", ], '/no-backup/xenofon/Ascend/pipeline/mtDNA_cis_eQTL/secondary/res/GTEX_cis_eQTL_SFO_sig_results_secondary.txt', 
+write.table(SFO[SFO$sig == "Yes", ], 'GTEX_cis_eQTL_SFO_sig_results_secondary.txt', 
             row.names = FALSE, col.names = TRUE, sep = '\t', quote = FALSE)
-write.table(TFB, '/no-backup/xenofon/Ascend/pipeline/mtDNA_cis_eQTL/secondary/res/GTEX_TFB_secondary_all.txt', 
+write.table(TFB, 'GTEX_TFB_secondary_all.txt', 
             row.names = FALSE, col.names = TRUE, sep = '\t', quote = FALSE)
-write.table(SFO, '/no-backup/xenofon/Ascend/pipeline/mtDNA_cis_eQTL/secondary/res/GTEX_SFO_secondary_all.txt', 
+write.table(SFO, 'GTEX_SFO_secondary_all.txt', 
             row.names = FALSE, col.names = TRUE, sep = '\t', quote = FALSE)
-
-# Prepare for tertiary run
-out <- "/no-backup/xenofon/Ascend/pipeline/mtDNA_cis_eQTL/tertiary/3_logTPM_scale/fvc/"
-tissues_tested <- unique(sig_TFB$tissue)
-
-for (t in tissues_tested) {
-  fvc_vector <- read.delim(paste0("/no-backup/xenofon/Ascend/pipeline/mtDNA_cis_eQTL/secondary/3_logTPM_scale/fvc/", t, "_fvc_input.txt"))
-  
-  r_save <- sig_TFB[sig_TFB$tissue == t, c("snp_id", "feature_id")]
-  names(r_save)[2] <- "feature"
-  r_save <- rbind(fvc_vector, r_save)
-  
-  write.table(r_save, paste0(out, t, "_fvc_input.txt"), row.names = FALSE, col.names = TRUE, sep = "\t", quote = FALSE)
-  dir.create(paste0("/no-backup/xenofon/Ascend/pipeline/mtDNA_cis_eQTL/tertiary/3_logTPM_scale/", t), showWarnings = FALSE)
-  print(t)
-}
