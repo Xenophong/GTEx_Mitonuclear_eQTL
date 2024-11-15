@@ -1,13 +1,13 @@
-# GTEx_Mitonuclear_eQTL
+# GTEx Mitonuclear eQTL
 Code used in analyses in the paper: Giannoulis X., et al. Interplay between mitochondrial and nuclear DNA in gene expression regulation, BioRxiv 2024
 
 # pre-processing and quality control 
 
-Scripts for identifying EUR samples in GTEx using genotype and population data from [1000G Phase 3](https://www.internationalgenome.org/category/phase-3/) are in the ```Preprocessing``` directory
+Scripts for identifying EUR samples in [GTEx v8](https://gtexportal.org/home/) using genotype and population data from [1000G Phase 3](https://www.internationalgenome.org/category/phase-3/) are in the ```Preprocessing``` directory
 Scripts for obtaining per-tissue [PEER factors](https://www.nature.com/articles/nprot.2011.457) that account for batch effects and other unknown confoundings present in  ```PEER``` directory
 
 # Genetic relatedness matrix (GRM)
-For all eQTLs analyses the same genetic relatedness matrix (GRM) is used; this GRM is calculated using the following steps from 5,523,421 common SNPs (MAF > 5%, missingness < 0.1, P value for HWE > 10-6) in 684 European samples in GTEx who we use in all analyses we perform in this paper
+For all eQTLs analyses the same genetic relatedness matrix (GRM) is used; this GRM is calculated using the following steps from 5,523,421 common SNPs (MAF > 5%, missingness < 0.1, P value for HWE > 10-6) in 684 European samples in GTEx who we use in all analyses we perform in this paper, using [LDAK v5](https://dougspeed.com/).
 
 1. Calculation of SNP weights
 ```
@@ -52,8 +52,17 @@ ldak --bfile $bfile --pheno $featurefile --covar $covfile --linear $outdir/$z --
 
 # Celltype interaction QTL analysis (ct-iQTLs) 
 
+We perform 
+
 # Enrichment analyses 
 
 # Colocalization analyses 
 
 # Mendelian randomization
+
+To perform Mendelian Randomization (MR) between nucDNA trans-eQTLs on mtDNA encoded genes and GWAS on complex traits and diseases, we obtained summary statistics at all nucDNA trans-eQTLs on mtDNA encoded genes at complex traits and diseases submitted to the [GWAS Cataloge](https://www.ebi.ac.uk/gwas/) using the [LDlinkR R package] (https://cran.r-project.org/web/packages/LDlinkR/index.html). 
+
+We then performed analyses between nucDNA trans-eQTLs on mtDNA encoded genes and the GWAS on complex traits and diseases identified, using the [Mendelian Randomization R package](https://cran.r-project.org/web/packages/MendelianRandomization/index.html). 
+
+All script for extracting the GWAS on complex traits and diseases data, as well as MR analyses, are shown in the ```post-eQTL``` directory
+
