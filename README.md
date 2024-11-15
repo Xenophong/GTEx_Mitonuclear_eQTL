@@ -52,15 +52,34 @@ ldak --bfile $bfile --pheno $featurefile --covar $covfile --linear $outdir/$z --
 
 # Celltype interaction QTL analysis (ct-iQTLs) 
 
-We perform 
+We performed cell-type interaction QTL analysis (ct-iQTL) on all significant mtDNA cis-eQTL, mtDNA trans-eQTL and nucDNA trans-eQTL. For these analyses we use [xCell scores](https://github.com/dviraran/xCell) obtained per sample per tissue, for 7 cell types in total, as previously described in [Kim-Hellmuth et al Science 2020](https://www.science.org/doi/10.1126/science.aaz8528) for GTEx samples. 
 
-# Enrichment analyses 
+Following recommendation in [Kim-Hellmuth et al Science 2020](https://www.science.org/doi/10.1126/science.aaz8528), we only performed cell-type interaction QTL analysis on cell types in each tissue where the median xCell score across all samples is > 0.1. 
+
+All scripts performing the ct-iQTL analysis are shown in the ```ct-iQTL``` directory. 
 
 # Colocalization analyses 
 
+We performed statistical colocalization between nucDNA trans-eQTLs on mtDNA encoded genes and nucDNA cis-eQTLs on nucDNA-eGenes (which we hypothesize may mediate the nucDNA trans-eQTLs on mtDNA encoded genes), using the [coloc R package](https://cran.r-project.org/web/packages/coloc/index.html). All script for formatting the data as well as performing the analyses are shown in the ```Coloc``` directory.
+
+# Enrichment analyses 
+
+We performed enrichment analysis for nucDNA genes identified to be associated with mtDNA SNPs in the mtDNA trans-eQTL analysis. We performed two different enrichment analysis, one for annotated pathways, and one for previously identified disease associations. 
+
+The former is performed using the [pathfindR R package](https://github.com/egeulgen/pathfindR), which identifies enrichment in specified databases. We used the following databases: 
+
+```
+genesets=c("KEGG","Reactome","BioCarta","GO-All")
+for (geneset in genesets){
+out=run_pathfindR(input,gene_sets=geneset,enrichment_threshold=0.05)
+}
+```
+
+The latter is performed using the [disgenet2r R package](https://github.com/jinfar/disgenet2r), we show scripts for running and processing of disgenet2r results in the ```post-eQTL``` directory. 
+
 # Mendelian randomization
 
-To perform Mendelian Randomization (MR) between nucDNA trans-eQTLs on mtDNA encoded genes and GWAS on complex traits and diseases, we obtained summary statistics at all nucDNA trans-eQTLs on mtDNA encoded genes at complex traits and diseases submitted to the [GWAS Cataloge](https://www.ebi.ac.uk/gwas/) using the [LDlinkR R package] (https://cran.r-project.org/web/packages/LDlinkR/index.html). 
+To perform Mendelian Randomization (MR) between nucDNA trans-eQTLs on mtDNA encoded genes and GWAS on complex traits and diseases, we obtained summary statistics at all nucDNA trans-eQTLs on mtDNA encoded genes at complex traits and diseases submitted to the [GWAS Cataloge](https://www.ebi.ac.uk/gwas/) using the [LDlinkR R package](https://cran.r-project.org/web/packages/LDlinkR/index.html). 
 
 We then performed analyses between nucDNA trans-eQTLs on mtDNA encoded genes and the GWAS on complex traits and diseases identified, using the [Mendelian Randomization R package](https://cran.r-project.org/web/packages/MendelianRandomization/index.html). 
 
