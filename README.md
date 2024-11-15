@@ -44,7 +44,7 @@ All scripts for primary and secondary analyses are shown in the ```mtDNA-cis-eQT
 # mtDNA trans-eQTLs and nucDNA trans-eQTLs 
 
 All trans-eQTL analyses in the paper are performed per tissue using [LDAK v5](https://dougspeed.com/).
-For mtDNA trans-eQTLs between mtDNA SNPs and nucDNA gene expression, genotype $bfile contains mtDNA SNPs, and gene expression $featurefile contains nucDNA gene expression values. For nucDNA trans-eQTLs between nucDNA SNPs and mtDNA gene expression, genotype $bfile contains nucDNA SNPs, and gene expression $featurefile contains mtDNA gene expression values. The same GRM estimated using nucDNA SNPs (as above) is used in both analysis as $kin. $covfile contains sex, age and PEER factors specific for each tissue. 
+For mtDNA trans-eQTLs between mtDNA SNPs and nucDNA gene expression, genotype $bfile contains mtDNA SNPs, and gene expression $featurefile contains nucDNA gene expression values. For nucDNA trans-eQTLs between nucDNA SNPs and mtDNA gene expression, genotype ```$bfile``` contains nucDNA SNPs, and gene expression ```$featurefile``` contains mtDNA gene expression values. The same GRM estimated using nucDNA SNPs (as above) is used in both analysis as ```$kin```. ```$covfile``` contains sex, age and PEER factors specific for each tissue. 
 
 ```
 ldak --bfile $bfile --pheno $featurefile --covar $covfile --linear $outdir/$z --grm $kin --max-iter 50000
