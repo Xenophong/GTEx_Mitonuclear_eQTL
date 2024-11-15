@@ -39,7 +39,7 @@ ldak --bfile $bfile --grm $wdir/partitions/kinships.all --pca $wdir/partitions/k
 # mtDNA cis-eQTLs 
 
 All trans-eQTL analyses in the paper are performed per tissue using [LIMIX eQTL pipeline](https://github.com/single-cell-genetics/limix_qtl)
-All scripts for primary and secondary analyses are shown in the ```mtDNA-cis-eQTL``` directory
+All scripts for primary and secondary analyses are shown in the ```mtDNA_cis_eQTL``` directory
 
 # mtDNA trans-eQTLs and nucDNA trans-eQTLs 
 
@@ -56,7 +56,7 @@ We performed cell-type interaction QTL analysis (ct-iQTL) on all significant mtD
 
 Following recommendation in [Kim-Hellmuth et al Science 2020](https://www.science.org/doi/10.1126/science.aaz8528), we only performed cell-type interaction QTL analysis on cell types in each tissue where the median xCell score across all samples is > 0.1. 
 
-All scripts performing the ct-iQTL analysis are shown in the ```ct-iQTL``` directory. 
+All scripts performing the ct-iQTL analysis are shown in the ```ct_iQTL``` directory. 
 
 # Colocalization analyses 
 
@@ -75,7 +75,7 @@ out=run_pathfindR(input,gene_sets=geneset,enrichment_threshold=0.05)
 }
 ```
 
-The latter is performed using the [disgenet2r R package](https://github.com/jinfar/disgenet2r), we show scripts for running and processing of disgenet2r results in the ```post-eQTL``` directory. 
+The latter is performed using the [disgenet2r R package](https://github.com/jinfar/disgenet2r), we show scripts for running and processing of disgenet2r results in the ```post_eQTL``` directory. 
 
 # Mendelian randomization
 
@@ -83,5 +83,5 @@ To perform Mendelian Randomization (MR) between nucDNA trans-eQTLs on mtDNA enco
 
 We then performed analyses between nucDNA trans-eQTLs on mtDNA encoded genes and the GWAS on complex traits and diseases identified, using the [Mendelian Randomization R package](https://cran.r-project.org/web/packages/MendelianRandomization/index.html). 
 
-All script for extracting the GWAS on complex traits and diseases data, as well as MR analyses, are shown in the ```post-eQTL``` directory
+All script for extracting the GWAS on complex traits and diseases data, as well as MR analyses, are shown in the ```post_eQTL``` directory
 
