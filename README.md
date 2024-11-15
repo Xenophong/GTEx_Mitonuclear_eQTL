@@ -53,6 +53,18 @@ ldak --bfile $bfile --pheno $featurefile --covar $covfile --linear $outdir/$z --
 
 We used the [SPEOs](https://www.nature.com/articles/s41467-023-42975-z) framework to perform prediction of nucDNA encoded genes involved in core mitochondrial functions using 1) 7 positive label sets of genes with previously published evidence of being transported into the mitochondria for mitochondrial functions in [MitoCarta](https://www.broadinstitute.org/mitocarta/mitocarta30-inventory-mammalian-mitochondrial-proteins-and-pathways) and [BioCarta](http://www.biocarta.com/), as follows: 
 
+|Label set name|N genes|
+|---|---|
+|Oxphos|605|
+|Metabolism|505|
+|CentralDogma|314|
+|ProteinImport|251|
+|Signalling|135|
+|SmallMolecules|102|
+|Dynamics|102|
+
+
+
 and 2) a the gene regulatory network that consists of protein-protein interaction networks from [BioPlex3.0](https://linkinghub.elsevier.com/retrieve/pii/S0092-8674(15)00768-0), [HuRI](http://www.interactome-atlas.org/), and [IntAct](https://www.ebi.ac.uk/intact/home), as well as  gene regulatory networks (GRNs) from 27 tissue-specific networks inferred from enriched TF motifs and RNA-seq data are obtained from [GRNdb](http://www.grndb.com/) and [Hetionet](https://het.io/). For the gene expression matrix, we input gene expression data from [GTEx v7](https://www.science.org/doi/10.1126/science.aaz1776) in 44 human tissues, 19 blood cell types and total peripheral mononuclear blood cells (PBMC) from the [human protein atlas](https://www.proteinatlas.org/), all of which are scaled using RobustScaler from [scikit-learn](https://scikit-learn.org/stable/) to mitigate the impact of outliers, as described in the original [SPEOs paper](https://www.nature.com/articles/s41467-023-42975-z).
 
 We train the default Multilayer Perceptron (MLP) classifiers on 1) and 2). 
