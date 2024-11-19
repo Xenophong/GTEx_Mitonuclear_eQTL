@@ -73,7 +73,7 @@ We then train a Graph Neuro-Network Topology Adaptive Graph Convolution (GNN-TAG
 
 Each classifier is trained using a nested cross validation with m = 11 outer folds, each comprising 10 inner folds, as previously described in the original [SPEOs paper](https://www.nature.com/articles/s41467-023-42975-z). 
 
-All scripts specifying the models and running SPEOs are shown in the ```SPEOs``` directory. 
+All scripts specifying the models and running SPEOs are shown in the ```SPEOS``` directory. 
 
 # Celltype interaction QTL analysis (ct-iQTLs) 
 
