@@ -1,0 +1,31 @@
+name: mtcentraldogma_mlp_eqtl
+
+crossval:
+        mode: kfold         # None, kfold, holdoneout (not implemented)
+        n_folds: 10
+        positive_only: True
+
+input:
+        tag: mtcentraldogma
+        input_field: name
+        adjacency: mtTransEQTL
+
+model:
+        pre_mp:
+                n_layers: 2
+        mp:
+                n_layers: 0
+        post_mp:
+                n_layers: 2
+
+
+        save_dir: /lustre/groups/epigenereg01/projects/ppi-florin/models/
+        plot_dir: /lustre/groups/epigenereg01/projects/ppi-florin/plots/
+
+inference:
+        save_dir: /lustre/groups/epigenereg01/projects/ppi-florin/results/
+        save_tsv: True
+
+pp:
+        save_dir: /lustre/groups/epigenereg01/projects/ppi-florin/results/
+        plot_dir: /lustre/groups/epigenereg01/projects/ppi-florin/plots/

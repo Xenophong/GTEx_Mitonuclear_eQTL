@@ -1,0 +1,9 @@
+[{"name": "mtTransEQTL",
+"type": "eqtl",
+"file_path": "data/mt_eqtl_network.tsv",
+"source": "From",
+"target": "To",
+"sep": "\t",
+"symbol": "ensembl",
+"weight": "None",
+"directed": false}]

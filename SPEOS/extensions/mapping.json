@@ -1,0 +1,7 @@
+[{"name": "UNK-mtcentraldogma",
+"ground_truth": "mtcentraldogma",
+"features_file": "",
+"function": "test_preprocess_labels",
+"args": ["./extensions/Mitochondrial_central_dogma_genes.txt"],
+"kwargs": {}
+}]

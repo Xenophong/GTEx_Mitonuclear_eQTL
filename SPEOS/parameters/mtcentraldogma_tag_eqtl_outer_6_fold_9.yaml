@@ -1,0 +1,142 @@
+crossval:
+  hold_out_test: true
+  key: _outer_{}
+  mode: kfold
+  n_folds: 10
+  outer_suffix: _outer_{}
+  positive_only: true
+  seed: 1
+  suffix: _fold_{}
+cuda: auto
+es:
+  key: auroc
+  metric: auroc
+  mode: max
+  patience: 100
+eval:
+  cutoff: 0.7
+  key: 50
+  log_prob_every: 50
+  target:
+  - train
+  - val
+inference:
+  cutoff_value: 0.7
+  gnn_explain: false
+  input_explain: false
+  key: false
+  save: true
+  save_dir: /lustre/groups/epigenereg01/projects/ppi-florin/results/
+  save_sorted: false
+  save_tsv: true
+  switch: true
+  target: all
+input:
+  adjacency: mtTransEQTL
+  adjacency_blacklist:
+  - recon3d
+  - string
+  adjacency_field: name
+  adjacency_mappings: speos/adjacencies.json
+  embedding_path: ./data/misc/walking_all.output
+  field: ground_truth
+  force_multigraph: false
+  gene_sets: ./data/mendelian_gene_sets
+  gwas: ./data/gwas
+  gwas_mappings: ./speos/mapping.json
+  holdout_positive_only: true
+  holdout_size: 0.1
+  key: ./data/
+  log_expression: false
+  randomize_adjacency_percent: 0
+  save_data: true
+  save_dir: ./data/
+  tag: mtcentraldogma
+  use_embeddings: false
+  use_expression: true
+  use_gwas: true
+key: 1689163242.611747
+logging:
+  dir: ./logs/
+  file: mtcentraldogma_tag_eqtl_outer_6
+  key: auto
+  level: 20
+model:
+  architecture: GeneNetwork
+  args: []
+  concat_after_mp: false
+  key: false
+  kwargs: {}
+  loss: bce
+  model: SimpleModel
+  mp:
+    dim: 50
+    k: 3
+    key: 3
+    kwargs: {}
+    n_layers: 2
+    nheads: null
+    normalize: instance
+    type: tag
+  plot: true
+  plot_dir: /lustre/groups/epigenereg01/projects/ppi-florin/plots/
+  post_mp:
+    act: elu
+    dim: 50
+    dropout: null
+    key: elu
+    n_layers: 2
+    normalize: null
+    type: fc
+  pre_mp:
+    act: elu
+    dim: 50
+    dropout: null
+    key: elu
+    n_layers: 2
+    normalize: null
+    type: fc
+  regularization_lambda: 0.01
+  save: true
+  save_dir: /lustre/groups/epigenereg01/projects/ppi-florin/models/
+  skip: false
+  skip_mp: false
+name: mtcentraldogma_tag_eqtl_outer_6_fold_9
+optim:
+  key: loss
+  lr: 0.001
+  measure: loss
+  target: val
+pp:
+  consensus: top_down
+  cutoff_type: split
+  cutoff_value: 0.7
+  key: /lustre/groups/epigenereg01/projects/ppi-florin/plots/
+  plot: true
+  plot_dir: /lustre/groups/epigenereg01/projects/ppi-florin/plots/
+  save: true
+  save_dir: /lustre/groups/epigenereg01/projects/ppi-florin/results/
+  switch: true
+  tasks:
+  - overlap_analysis
+  - dge
+  - pathway
+  - hpo_enrichment
+  - go_enrichment
+  - drugtarget
+  - druggable
+  - mouseKO
+  - lof_intolerance
+scheduler:
+  factor: 0.33
+  key: max
+  limit: 0.0001
+  mode: max
+  patience: 25
+timestamp: 1689163242.611747
+training:
+  dilution: 10
+  key: 10
+  max_epochs: 1000
+  pos_weight: 2
+  switch: true
