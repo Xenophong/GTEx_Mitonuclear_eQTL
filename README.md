@@ -85,7 +85,7 @@ All scripts performing the ct-iQTL analysis are shown in the ```ct_iQTL``` direc
 
 # Colocalization analyses 
 
-We performed statistical colocalization between nucDNA trans-eQTLs on mtDNA encoded genes and nucDNA cis-eQTLs on nucDNA-eGenes (which we hypothesize may mediate the nucDNA trans-eQTLs on mtDNA encoded genes), using the [coloc R package](https://cran.r-project.org/web/packages/coloc/index.html). All script for formatting the data as well as performing the analyses are shown in the ```Coloc``` directory.
+We performed statistical colocalization between nucDNA trans-eQTLs on mtDNA encoded genes and nucDNA cis-eQTLs on nucDNA-eGenes (which we hypothesize may mediate the nucDNA trans-eQTLs on mtDNA encoded genes), using the [coloc R package](https://cran.r-project.org/web/packages/coloc/index.html). Plotting is done using the [eQTpLot](https://github.com/RitchieLab/eQTpLot) R package. All script for formatting the data as well as performing the analyses are shown in the ```Coloc``` directory.
 
 # Enrichment analyses 
 
