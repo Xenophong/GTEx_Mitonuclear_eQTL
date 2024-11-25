@@ -35,9 +35,6 @@ interaction_eqtl_analysis <- function(
   main_model <- lm(main_formula, data = merged_data)
   main_results <- summary(main_model)
   
-  # Extract SNP p-value
-  snp_pvalue <- main_results$coefficients[snp, "Pr(>|t|)"]
-  
   # Interaction testing with cell types
   interaction_results <- list()
   cell_types <- setdiff(names(cell_counts_data), "SUBID")  # Exclude identifier column
