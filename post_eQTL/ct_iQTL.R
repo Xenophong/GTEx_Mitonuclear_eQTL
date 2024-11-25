@@ -11,9 +11,9 @@ interaction_eqtl_analysis <- function(
   # - tissue: name of the tissue being analyzed
   # - snp: SNP identifier
   # - gene_expression_data: data frame with gene expression values
-  # - cell_counts_data: data frame with cell type proportions
+  # - cell_counts_data: data frame with normalized cell types
   # - genotype_data: data frame with genotype values
-  # - covariates_data: data frame with additional covariates (e.g., age, sex)
+  # - covariates_data: data frame with additional covariates (age, sex)
   # - peer_factors: data frame with PEER factors
   # - pca_data: data frame with PCA components
 
