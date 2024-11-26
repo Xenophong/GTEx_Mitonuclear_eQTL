@@ -81,7 +81,7 @@ We performed cell-type interaction QTL analysis (ct-iQTL) on all significant mtD
 
 Following recommendation in [Kim-Hellmuth et al Science 2020](https://www.science.org/doi/10.1126/science.aaz8528), we only performed cell-type interaction QTL analysis on cell types in each tissue where the median xCell score across all samples is > 0.1. 
 
-All scripts performing the ct-iQTL analysis are shown in the ```ct_iQTL``` directory. 
+All scripts performing the ct-iQTL analysis are shown in the ```post_eQTL``` directory. 
 
 # Colocalization analyses 
 
